@@ -1,0 +1,12 @@
+
+#
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: bad_hair_development
+  pool: 5
+  host: localhost
+  username: Froese
+  password:
+
+  
