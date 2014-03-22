@@ -7,16 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav>
-  <%= link_to("Home", root_path) %>
-  <%= link_to("Login", users_path) %>
-  <%= link_to("Register", new_user_path) %>
-  <a href="/contact">Contact us</a>
-</nav>
-<%= yield %>
-
+  <nav>
+    <%= link_to("Home", root_path) %>
+    <%= link_to("Login", users_path) %>
+    <%= link_to("Register", new_user_path) %>
+    <a href="/contact">Contact us</a>
+  </nav>
+  <%= yield %>
+  <footer>
+    <a href="/contact">Advertise</a>
+  </footer>
 </body>
-<footer>
-  <a href="/contact">Advertise</a>
-</footer>
+
 </html>

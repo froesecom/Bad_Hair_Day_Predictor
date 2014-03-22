@@ -35,6 +35,8 @@ require 'open-uri'
 gem 'json'
 gem 'protected_attributes'
 gem 'annotate'
+gem 'country_select'
+gem 'httparty'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
