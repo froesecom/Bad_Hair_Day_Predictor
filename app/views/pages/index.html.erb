@@ -2,10 +2,10 @@
 <form action="/results" method="post">
   
   <label for="country">What country are you in? </label>
-  <input type="text" name="country" class="text_input" required value="Country">
+  <input type="text" name="country" class="text_input" required placeholder="Country">
   
   <label for="city">What city? </label>
-  <input type="text" name="city" class="text_input" required value="City">
+  <input type="text" name="city" class="text_input" required placeholder="City">
 
   <label for="length">How long is your hair? </label>
   <select name="length" id="length" autofocus>
@@ -29,8 +29,8 @@
   </select>
   
   <label for="modification">Do you have any of the following? </label><br>
-  <% @modifications.each do |modification| %>
-    <input type="checkbox" value="<%= modification %>" name="<%= modification %>"><%= modification %><br>
+  <% @modifications.each do |mod_id, modification| %>
+    <input type="checkbox" value="<%= mod_id %>" name="<%= modification %>"><%= modification %><br>
   <% end %>
 
   

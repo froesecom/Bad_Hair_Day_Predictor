@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @lengths = ['no hair', 'very short', 'short', 'jaw-length', 'shoulder-length', 'back-length+']
     @curliness_factors = ['straight', 'wavy', 'curly', 'afro' ]
     @hygiene_factors = ['today', 'yesterday', 'days ago', 'can’t remember']
-    @modifications = ['recent haircut' , 'perm',  'dye', 'highlights'] 
+    @modifications = {"modification1" => "recent haircut", "modification2" => "hair product", "modification3" => "perm", "modification4" => "dye", "modification5" => "highlights"} 
   end
   def results
     url = "http://api.wunderground.com/api/f1860d746ba9953d/geolookup/conditions/forecast/q/#{params[:country]}/#{params[:city]}.json"
