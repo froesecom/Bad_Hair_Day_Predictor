@@ -4,22 +4,22 @@ class PagesController < ApplicationController
   def index
     @hairstyle = Hairstyle.current_attributes
   end
+
   def results
-    url = "http://api.wunderground.com/api/f1860d746ba9953d/geolookup/conditions/forecast/q/#{params[:country]}/#{params[:city]}.json"
-    response = HTTParty.get(url)
-    json_string = JSON(response)
-    parsed_json = JSON.parse(json_string)
-    @city = parsed_json['location']['city']
-    @country = parsed_json['location']['country_name']
-    @humidity = parsed_json["forecast"]["simpleforecast"]["forecastday"].first['avehumidity']
-    @temp = parsed_json["forecast"]["simpleforecast"]["forecastday"].first['high']['celsius']
-    @wind = @humidity = parsed_json["forecast"]["simpleforecast"]["forecastday"].first['avewind']['kph']
-    @pop = parsed_json["forecast"]["simpleforecast"]["forecastday"].first['pop']
-    @weather_icon = parsed_json["forecast"]["simpleforecast"]["forecastday"].first['icon_url']
-    @wunderground_logo = parsed_json['current_observation']['image']['url']
-    
+    weather = Hairstyle.weather(params[:country], params[:city])
+    @city = weather[:city]
+    @country = weather[:country]
+    @humidity = weather[:humidity]
+    @temp = weather[:temp]
+    @wind = weather[:wind]
+    @pop = weather[:pop]
+    @weather_icon = weather[:weather_icon]
+    @wunderground_logo = weather[:wunderground_logo]
+    @bad_hair_prediction = Hairstyle.prediction(params[:length], params[:curliness], params[:hygiene], @humidity, @wind, @pop)
+
     
   end
+
   def contact
   end
 end
