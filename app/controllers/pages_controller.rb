@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def results
-    weather = Hairstyle.weather(params[:country], params[:city])
+    weather = Hairstyle.weather(params[:user][:country].gsub(" ", ""), params[:city].gsub(" ", ""))
     @city = weather[:city]
     @country = weather[:country]
     @humidity = weather[:humidity]
@@ -15,8 +15,9 @@ class PagesController < ApplicationController
     @pop = weather[:pop]
     @weather_icon = weather[:weather_icon]
     @wunderground_logo = weather[:wunderground_logo]
-    @bad_hair_prediction = Hairstyle.prediction(params[:length], params[:curliness], params[:hygiene], @humidity, @wind, @pop)
-
+    prediction_results = Hairstyle.prediction(params[:length], params[:curliness], params[:hygiene], @humidity, @wind, @pop, params[:modifications])
+    @bad_hair_prediction = prediction_results[:prediction]
+    @reasons = prediction_results[:reasons]
     
   end
 

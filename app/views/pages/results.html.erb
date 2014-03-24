@@ -7,5 +7,9 @@
   <p>Probability of precipitation: <%= @pop %>%</p>
 
 
+<% @reasons.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
   <aside>Weather data supplied by <img alt="wunderground logo" src="<%= @wunderground_logo %>"> 
   </aside>

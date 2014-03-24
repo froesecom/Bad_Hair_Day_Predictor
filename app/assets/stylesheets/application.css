@@ -11,3 +11,19 @@
  *= require_self
  *= require_tree .
  */
+html {
+  font-family: 'Droid Sans', sans-serif;
+}
+body {
+  padding: 0 15px 15px 15px;
+}
+h1, h2 {
+  font-family: 'Lobster', cursive;
+}
+
+footer {
+  position:absolute;
+  bottom:15px;
+  width:100%;
+  background: solid white;
+}

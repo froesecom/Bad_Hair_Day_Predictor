@@ -43,12 +43,25 @@ class Hairstyle < ActiveRecord::Base
 
   end
 
-  def self.prediction(length_params, curliness_params, hygiene_params, humidity_params, wind_params, pop_params)
+  def self.prediction(length_params, curliness_params, hygiene_params, humidity_params, wind_params, pop_params, modification_params)
     hairstyle = Hairstyle.current_attributes
-    
-    if hairstyle[:length_attributes][length_params] == 0.0
-      bad_hair_prediction = "You have no hair. What kind of a prediction did you expect?"
+    reasons = []
+    # The variables below are set to the score of each attribute
+    length_score = hairstyle[:length_attributes][length_params]
+    curliness_score = hairstyle[:curliness_attributes][curliness_params]
+    hygiene_score = hairstyle[:hygiene_attributes][hygiene_params]
 
+    # The reasons.push lines found throughout the code give users feedback on their bad hair day prediction.
+    if length_score <= 2.0
+      reasons.push "Shorter hair is less likely to be affected by bad weather, especially wind. "
+    end
+    if hygiene_score >= 5.0
+      reasons.push "Greasy hair increases the risk of a bad hair day. Wash your hair!"
+    end
+# =========== THE ALGORITHM STARTS HERE!!!!!================================================
+
+    if length_score == 0.0
+      bad_hair_prediction = "You have no hair. What kind of a prediction did you expect?"
     else
     # <-------The following section calculates a humidity score. --------------------------------->
     # Optimum humidity is defined as 30% Equal to or over 30%, users incure a humidity multiplier. Under 30%, users incure a static electricity mutliplier.
@@ -60,12 +73,25 @@ class Hairstyle < ActiveRecord::Base
       if humidity >= 3.0
         humidity_curl_risk = (humidity - 3.0 ) 
         humidity_other_risk = (humidity - 3.0 )/2
+        #the following provides information to the users about certain high-risk humidity combinations
+        if humidity >= 6.0 && curliness_score >= 4.0
+          reasons.push "High humidity and wavy or curly hair increases your risk of a bad hair day. "
+        elsif humidity > 7.0
+          reasons.push "High humidity increases your risk for a bad hair day. "
+        elsif humidity > 2.75 && humidity < 3.25
+          reasons.push "Around 30% humidity is ideal for hair. "   
+        end
+
+        
       else
         humidity_curl_risk = (3.0 - humidity)
         humidity_other_risk = (3.0 - humidity)/2
+        if humidity <= 1.5
+          reasons.push "Low humidity can cause static electricity, which increases your risk of a bad hair day. "
+        end
       end
-      hum_curl_score = hairstyle[:curliness_attributes][curliness_params]  * (humidity_curl_risk) 
-      hum_other_score =  (hairstyle[:length_attributes][length_params] + hairstyle[:hygiene_attributes][hygiene_params]) * humidity_other_risk
+      hum_curl_score = curliness_score  * (humidity_curl_risk) 
+      hum_other_score =  (length_score + hygiene_score) * humidity_other_risk
 
     # <-------The following section calculates a wind score  --------------------------------->
     # Optimum wind is defined as 0.0kph. For each increment above 0.0, users incure a wind multiplier.
@@ -74,10 +100,17 @@ class Hairstyle < ActiveRecord::Base
       
       wind_length_risk = wind_params/10
       wind_other_risk = wind_params/20
+
+      wind_length_score = length_score  * wind_length_risk 
+      wind_other_score = (curliness_score + hygiene_score) * wind_other_risk
       
-      wind_length_score = hairstyle[:length_attributes][length_params]  * wind_length_risk 
-      wind_other_score = (hairstyle[:curliness_attributes][curliness_params] + hairstyle[:hygiene_attributes][hygiene_params]) * wind_other_risk
-      
+      if wind_params > 30
+        reasons.push "Windy days cause havoc with all types of hair. "
+      elsif wind_params >= 20
+        reasons.push "Windy days are especially bad for longer hair. "
+      elsif wind_params <=10
+        reasons.push "A lack of wind is a good omen. "
+      end
       
       
     # <-------The following section calculates a P.O.P. score.  ------------------>
@@ -86,23 +119,41 @@ class Hairstyle < ActiveRecord::Base
     # If pop is >= 80, bad hair day multiplier doubles.
       
       if pop_params >= 80.0
-        pop_score = (hairstyle[:curliness_attributes][curliness_params] + hairstyle[:hygiene_attributes][hygiene_params] + hairstyle[:length_attributes][length_params]) * (pop_params/25)
+        pop_score = (curliness_score + hygiene_score + length_score) * (pop_params/25)
       else
-        pop_score = (hairstyle[:curliness_attributes][curliness_params] + hairstyle[:hygiene_attributes][hygiene_params] + hairstyle[:length_attributes][length_params]) * (pop_params/50)
+        pop_score = (curliness_score + hygiene_score + length_score) * (pop_params/50)
+      end
+      
+      if pop_params >= 80
+        reasons.push "A high probability of precipitation means trouble for your hair."
+      elsif pop_params >= 65
+        reasons.push "A relatively high chance of precipitation may cause you grief! "
+      elsif pop_params < 20
+        reasons.push "A low chance of precipitation bodes well. "
       end
 
     # ------ the following figures out the modifications scores 
+  
+    mod_score = 0.0
+    if modification_params
+      modification_params.each do | modification |
+        mod_score +=  hairstyle[:modification_attributes][modification]
+      end
+    end
 
+    # mod_score now has the sum of the mods
+    
     # <-------The following section calculates overall bad hair day risk score  --------------------------------->
       # user_badhair_score = hum_curl + hum_else + wind_length + length_else + percip + params[:modifications]
-      user_badhair_score = hum_curl_score + hum_other_score + wind_length_score + wind_other_score + pop_score
+     
+      user_badhair_score = hum_curl_score + hum_other_score + wind_length_score + wind_other_score + pop_score + mod_score
 
     # <-------Bad hair day prediction below  --------------------------------->
       if wind_params < 5.0 && humidity > 2.75 && humidity < 3.25 && hygiene_params =='can’t remember' && pop_params == 0.0
         bad_hair_prediction = "Today the weather is perfect for hair... If you wash your hair, you'll have a great hair day. Otherwise, you'll have a good, greasy hair day."
       elsif wind_params < 5.0 && humidity > 2.75 && humidity < 3.25 && pop_params == 0.0
         bad_hair_prediction = "Today the weather is perfect for hair. Go get 'em champ!"
-      elsif user_badhair_score > 110.0
+      elsif user_badhair_score > 100.0
         bad_hair_prediction = "Worst day for hair in the history of the universe."
       else
         case user_badhair_score
@@ -118,18 +169,24 @@ class Hairstyle < ActiveRecord::Base
           bad_hair_prediction = "Below average day for hair"
         when 50.0..60.0
           bad_hair_prediction = "Bad day for hair"
-        when 70.0..80.0
+        when 60.0..70.0
           bad_hair_prediction = "Crap day for hair"
-        when 80.0..90.0
+        when 70.0..80.0
           bad_hair_prediction = "Terrible day for hair"
-        when 90.0..100.0
+        when 80.0..90.0
           bad_hair_prediction = "Horrendous day for hair"
-        when 100.0..110.0
+        when 90.0..100.0
           bad_hair_prediction = "Catestrophic day for hair"
         end
       end
     end
+    
 
-    bad_hair_prediction
+    # --------------The following returns the results of the prediction along with the reasons----------------
+    results = {
+      :prediction => bad_hair_prediction,
+      :reasons => reasons
+    }
+    results
   end
 end

@@ -1,38 +1,49 @@
 <h1>Bad Hair Day Predictor</h1>
-<form action="/results" method="post">
-  
-  <label for="country">What country are you in? </label>
-  <input type="text" name="country" class="text_input" required placeholder="Country">
-  
-  <label for="city">What city? </label>
-  <input type="text" name="city" class="text_input" required placeholder="City">
+<div id="home">
+  <div id="home_form">
+    <form action="/results" method="post">
+      <p>
+        <label for="country">What country are you in? </label>
+        <%= country_select("user", "country", ["Australia", "Canada"]) %>
+      </p>
+      
+      <p>
+        <label for="city">What city? </label>
+        <input type="text" name="city" class="text_input" required placeholder="City">
+      </p>
+      <p>
+        <label for="length">How long is your hair? </label>
+        <select name="length" id="length">
+          <% @hairstyle[:length_attributes].each do |length, value| %>
+            <option value="<%= length %>" name="<%= length %>"><%= length %></option>
+          <% end %>
+        </select>
+      </p>
+      <p>
+        <label for="curliness">How curly is your hair? </label>
+        <select name="curliness" id="curliness" >
+          <% @hairstyle[:curliness_attributes].each do |curliness, value| %>
+            <option value="<%= curliness %>" name="<%= curliness %>"><%= curliness %></option>
+          <% end %>
+        </select>
+      </p>
+      <p>
+        <label for="hygiene">When did you last wash your hair? </label>
+        <select name="hygiene" id="hygiene" >
+          <% @hairstyle[:hygiene_attributes].each do |hygiene, value| %>
+            <option value="<%= hygiene %>" name="<%= hygiene %>"><%= hygiene %></option>
+          <% end %>
+        </select>
+      </p>
+      <p>
+        <label for="modification">Do you have any of the following? </label><br>
+        <% @hairstyle[:modification_attributes].each do |modification, value| %>
+          <input type="checkbox" value="<%= modification %>" name="modifications[]"><%= modification %><br>
+        <% end %>
+      </p>
+      <button>Hair predicticate!</button>
+    </form>
+  </div>
+</div>
 
-  <label for="length">How long is your hair? </label>
-  <select name="length" id="length" autofocus>
-    <% @hairstyle[:length_attributes].each do |length, value| %>
-      <option value="<%= length %>" name="<%= length %>"><%= length %></option>
-    <% end %>
-  </select>
-  
-  <label for="curliness">How curly is your hair? </label>
-  <select name="curliness" id="curliness" >
-    <% @hairstyle[:curliness_attributes].each do |curliness, value| %>
-      <option value="<%= curliness %>" name="<%= curliness %>"><%= curliness %></option>
-    <% end %>
-  </select>
-  
-  <label for="hygiene">When did you last wash your hair? </label>
-  <select name="hygiene" id="hygiene" >
-    <% @hairstyle[:hygiene_attributes].each do |hygiene, value| %>
-      <option value="<%= hygiene %>" name="<%= hygiene %>"><%= hygiene %></option>
-    <% end %>
-  </select>
-  
-  <label for="modification">Do you have any of the following? </label><br>
-  <% @hairstyle[:modification_attributes].each do |modification, value| %>
-    <input type="checkbox" value="<%= modification %>" name="<%= modification %>"><%= modification %><br>
-  <% end %>
 
-  
-  <button>Hair bag it!</button>
-</form>
