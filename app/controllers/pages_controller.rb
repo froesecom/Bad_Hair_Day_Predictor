@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def results
-    weather = Hairstyle.weather(params[:user][:country].gsub(" ", ""), params[:city].gsub(" ", ""))
+    weather = Hairstyle.weather(params[:user][:country].gsub(" ", "_"), params[:city].gsub(" ", "_"))
     @city = weather[:city]
     @country = weather[:country]
     @humidity = weather[:humidity]

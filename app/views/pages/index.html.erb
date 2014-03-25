@@ -38,7 +38,7 @@
       <p>
         <label for="modification">Do you have any of the following? </label><br>
         <% @hairstyle_attributes[:modification_attributes].each do |modification, value| %>
-          <input type="checkbox" value="<%= modification %>" name="modifications[]"><%= modification %>
+          <input type="checkbox" value="<%= modification %>" name="modifications[]"><%= modification %><br>
         <% end %>
       </p>
       <button>Hair predicticate!</button>
