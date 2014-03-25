@@ -13,11 +13,10 @@
   <%= f.label "When did you last wash your hair?" %>
   <%= f.select :hygiene, @hygiene %>
   
-  <%= f.label "Do you have any of the following?" %>
-    <% @modification.each do |mod| %>
-      <%= f.check_box :modifications %>
+  <label for="modification">Do you have any of the following? </label>
+    <% @modification.each do |modification, value| %>
+      <input type="checkbox" value="<%= modification %>" name="modifications[]"><%= modification %><br>
     <% end %>
-
  
   <%= f.submit %>  
  <% end %>
