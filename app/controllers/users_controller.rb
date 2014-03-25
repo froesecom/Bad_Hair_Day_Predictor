@@ -40,6 +40,6 @@ class UsersController < ApplicationController
   end
 
   def check_owner
-    redirect_to(root_path) if params[:id] != @current_user.id 
+    redirect_to(root_path) if params[:id] != @current_user.id.to_s 
   end
 end

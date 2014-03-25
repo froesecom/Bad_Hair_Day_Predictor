@@ -93,7 +93,7 @@ class Hairstyle < ActiveRecord::Base
 # =========== THE ALGORITHM STARTS HERE!!!!!================================================
 
     if length_score == 0.0
-      bad_hair_prediction = "You have no hair. What kind of a prediction did you expect?"
+      bad_hair_prediction = ["You have no hair. What kind of a prediction did you expect?", "", "no_hair", ""]
     else
     # <-------The following section calculates a humidity score. --------------------------------->
     # Optimum humidity is defined as 30% Equal to or over 30%, users incure a humidity multiplier. Under 30%, users incure a static electricity mutliplier.
@@ -181,34 +181,35 @@ class Hairstyle < ActiveRecord::Base
       user_badhair_score = hum_curl_score + hum_other_score + wind_length_score + wind_other_score + pop_score + mod_score
 
     # <-------Bad hair day prediction below  --------------------------------->
+    # bad hair prediction results are an array of this format [prediction, message, div id, backgroun url]
       if wind_params < 5.0 && humidity > 2.75 && humidity < 3.25 && hygiene_params =='can’t remember' && pop_params == 0.0
         bad_hair_prediction = "Today the weather is perfect for hair... If you wash your hair, you'll have a great hair day. Otherwise, you'll have a good, greasy hair day."
       elsif wind_params < 5.0 && humidity > 2.75 && humidity < 3.25 && pop_params == 0.0
         bad_hair_prediction = "Today the weather is perfect for hair. Go get 'em champ!"
       elsif user_badhair_score > 100.0
-        bad_hair_prediction = "Worst day for hair in the history of the universe."
+        bad_hair_prediction = ["Worst day for hair in the history of the universe.", "", "worst", ""]
       else
         case user_badhair_score
         when 0.0..10.0
-          bad_hair_prediction = "Perfect day for hair"
+          bad_hair_prediction = ["Perfect day for hair", "Your hair is perfect. Let's be in love.", "perfect", "/assets/amazing.jpg"]
         when 10.0..20.0
-          bad_hair_prediction = "Amazing day for hair"
+          bad_hair_prediction = ["Amazing day for hair", "Well ain't that something'!", "amazing", "/assets/amazing.jpg"]
         when 20.0..30.0
-          bad_hair_prediction = "Good day for hair"
+          bad_hair_prediction = ["Good day for hair", "Hot diddly dog!", "good", "/assets/good.jpg"]
         when 30.0..40.0
-          bad_hair_prediction = "Average day for hair"
+          bad_hair_prediction = ["Average day for hair", "", "average", ""]
         when 40.0..50.0
-          bad_hair_prediction = "Below average day for hair"
+          bad_hair_prediction = ["Below average day for hair", "", "below_average", ""]
         when 50.0..60.0
-          bad_hair_prediction = "Bad day for hair"
+          bad_hair_prediction = ["Bad day for hair", "You have got to be fucking kidding me.", "bad", "/assets/bad.jpg"]
         when 60.0..70.0
-          bad_hair_prediction = "Crap day for hair"
+          bad_hair_prediction = ["Crap day for hair", "Well that's crap.", "crap", "/assets/bad.jpg"]
         when 70.0..80.0
-          bad_hair_prediction = "Terrible day for hair"
+          bad_hair_prediction = ["Terrible day for hair", "", "terrible", ""]
         when 80.0..90.0
-          bad_hair_prediction = "Horrendous day for hair"
+          bad_hair_prediction = ["Horrendous day for hair", "", "horrendous", ""]
         when 90.0..100.0
-          bad_hair_prediction = "Catestrophic day for hair"
+          bad_hair_prediction = ["Catestrophic day for hair", "", "catestrophic", ""]
         end
       end
     end

@@ -16,7 +16,10 @@ class PagesController < ApplicationController
     @weather_icon = weather[:weather_icon]
     @wunderground_logo = weather[:wunderground_logo]
     prediction_results = Hairstyle.prediction(params[:length], params[:curliness], params[:hygiene], @humidity, @wind, @pop, params[:modifications])
-    @bad_hair_prediction = prediction_results[:prediction]
+    @bad_hair_prediction = prediction_results[:prediction].first
+    @message = prediction_results[:prediction][1]
+    @div_id = prediction_results[:prediction][2]
+    @background_url = prediction_results[:prediction][3]
     @reasons = prediction_results[:reasons]
     
   end

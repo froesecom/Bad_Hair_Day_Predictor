@@ -10,7 +10,26 @@
   padding: 10px;
   border: 3px solid black;
 }
-
+.results {
+  min-height: 900px;
+  padding: 25px;
+  display: block;
+}
+.results#good {
+  padding: 60px;
+}
+.results#perfect {
+  color: white;
+  text-shadow: 0 0 10px black;
+}
+.results#bad, .results#crap {
+  text-align: right;
+  max-width: 900px;
+}
+aside {
+  text-align: right;
+  padding: 0 40px 10px 0;
+}
 select {
   display: block;
 }
