@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+    @name = @current_user.name
   end
 
   def update

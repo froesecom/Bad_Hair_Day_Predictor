@@ -2,6 +2,7 @@
   background: url("/assets/index_pages.jpg") no-repeat;
   background-size: contain;
   height: 800px;
+  min-width: 900px;
   padding: 25px;
 }
 #home_form {
@@ -11,9 +12,11 @@
   border: 3px solid black;
 }
 .results {
-  min-height: 900px;
+  min-height: 800px;
   padding: 25px;
   display: block;
+  max-width: 960px;
+  margin: 0 auto;
 }
 .results#good {
   padding: 60px;
@@ -22,13 +25,19 @@
   color: white;
   text-shadow: 0 0 10px black;
 }
+.results#below_average {
+  color: white;
+  text-shadow: 0 0 10px black;
+  padding: 60px;
+  min-height: 600px;
+}
 .results#bad, .results#crap {
   text-align: right;
   max-width: 900px;
 }
 aside {
-  text-align: right;
-  padding: 0 40px 10px 0;
+  text-align: left;
+  padding-left: 120px;
 }
 select {
   display: block;

@@ -17,11 +17,29 @@ html {
 body {
   padding: 0 15px 15px 15px;
 }
-h1, h2 {
+h1, h2, nav a {
   font-family: 'Lobster', cursive;
 }
-
+#contact_nav {
+  float: right;
+}
+nav {
+  background-color: #D0006E;
+  padding: 10px 30px 10px 30px;
+  border: 3px solid black;
+}
+nav a:hover {
+  color: #FFB540;
+  text-shadow: 0 0 10px white;
+}
+nav a {
+  text-decoration: none;
+  color: white;
+  text-shadow: 0 0 10px black;
+  margin-right: 15px;
+}
 footer {
+  font-family: 'Lobster', cursive;
   position:absolute;
   bottom:15px;
   width:100%;

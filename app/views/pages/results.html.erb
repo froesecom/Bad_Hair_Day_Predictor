@@ -1,10 +1,10 @@
 <!-- <div style="background: <%=  %>"></div>  this is how you create different background-->
-<h1><%= @bad_hair_prediction %></h1>
 
+<h1><%= @bad_hair_prediction %></h1>
 <div style="background: url(<%= @background_url %>) no-repeat; background-size: contain;" class="results" id="<%= @div_id %>">
   <h1><%= @message %></h1>
 </div>
-<div id="results_moreinfo">
+<div class="results" id="results_moreinfo">
 
   <h2>Today's forecast for <%= @city %>, <%= @country %> <img src="<%= @weather_icon %>"></h2>
   <p>Temperature: <%= @temp %> C</p>

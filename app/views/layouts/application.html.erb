@@ -11,9 +11,8 @@
   <body>
     <nav>
       <%= link_to("Home", root_path) %>
-      <%= link_to("Login", login_path) %>
-      <%= link_to("Register", new_user_path) %>
-      <a href="/contact">Contact us</a>
+      <%== intellinav  %>
+      <a id="contact_nav" href="/contact">Contact us</a>
     </nav>
     <%= yield %>
     
