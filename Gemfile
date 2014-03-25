@@ -32,6 +32,7 @@ gem 'protected_attributes'
 gem 'country_select'
 gem 'httparty'
 gem 'bcrypt-ruby'
+gem 'rails_12factor'
 
 group :development do
   gem 'pry-rails'
