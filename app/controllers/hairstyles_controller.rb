@@ -1,14 +1,14 @@
 class HairstylesController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  before_filter :check_if_logged_in, :except => [:create, :new]
+  before_filter :check_if_admin, :only => [:index]
   def index
   end
 
   def create
     @hairstyle = Hairstyle.new params[:user]
-    binding.pry
     if @hairstyle.save
       session[:hairstyle_id] = @hairstyle.id
-      redirect_to user_path
+      redirect_to user_path(@current_user.id)
     else
       render :new
     end
