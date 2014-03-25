@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140321232158) do
     t.string   "length"
     t.string   "curliness"
     t.string   "hygiene"
-    t.string   "modifications"
+    t.text     "modifications"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -12,6 +12,12 @@
 
   <%= f.label "When did you last wash your hair?" %>
   <%= f.select :hygiene, @hygiene %>
+  
+  <%= f.label "Do you have any of the following?" %>
+    <% @modification.each do |mod| %>
+      <%= f.check_box :modifications %>
+    <% end %>
+
  
   <%= f.submit %>  
  <% end %>

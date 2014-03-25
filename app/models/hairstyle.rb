@@ -7,7 +7,7 @@
 #  length        :string(255)
 #  curliness     :string(255)
 #  hygiene       :string(255)
-#  modifications :string(255)
+#  modifications :text
 #  created_at    :datetime
 #  updated_at    :datetime
 #
@@ -47,6 +47,14 @@ class Hairstyle < ActiveRecord::Base
       hygiene_keys.push(hygiene)
     end
     hygiene_keys
+  end
+
+   def self.modification
+    modification_keys = []
+    Hairstyle.current_attributes[:modification_attributes].each do |modification, value|
+      modification_keys.push(modification)
+    end
+    modification_keys
   end
 
   def self.weather(country, city)

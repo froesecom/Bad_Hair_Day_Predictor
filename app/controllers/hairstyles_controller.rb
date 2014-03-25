@@ -19,6 +19,7 @@ class HairstylesController < ApplicationController
     @length = Hairstyle.length
     @curliness = Hairstyle.curliness
     @hygiene = Hairstyle.hygiene
+    @modification = Hairstyle.modification
 
   end
 

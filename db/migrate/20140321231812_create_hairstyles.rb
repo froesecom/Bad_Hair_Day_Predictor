@@ -5,7 +5,7 @@ class CreateHairstyles < ActiveRecord::Migration
       t.string :length
       t.string :curliness
       t.string :hygiene
-      t.string :modifications
+      t.text :modifications
       t.timestamps
     end
   end
