@@ -1,2 +1,11 @@
-<h1>Hairstyles#new</h1>
-<p>Find me in app/views/hairstyles/new.html.erb</p>
+<% if @hairstyle.errors.any? %>
+  <ol>
+    <% @hairstyle.errors.full_messages.each do |msg| %> 
+     <li> 
+        <%= msg %> 
+    </li>
+    <% end %>
+  </ol>
+<% end %>
+
+<%= render :partial => 'form' %>

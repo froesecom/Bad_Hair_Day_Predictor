@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @hairstyle = Hairstyle.current_attributes
+    @hairstyle_attributes = Hairstyle.current_attributes
   end
 
   def results

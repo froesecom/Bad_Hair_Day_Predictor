@@ -4,9 +4,22 @@ class HairstylesController < ApplicationController
   end
 
   def create
+    @hairstyle = Hairstyle.new params[:user]
+
+    if @hairstyle.save
+      session[:hairstyle_id] = @hairstyle.id
+      redirect_to user_path
+    else
+      render :new
+    end
   end
 
   def new
+    @hairstyle = Hairstyle.new 
+    @length = Hairstyle.length
+    @curliness = Hairstyle.curliness
+    @hygiene = Hairstyle.hygiene
+
   end
 
   def edit

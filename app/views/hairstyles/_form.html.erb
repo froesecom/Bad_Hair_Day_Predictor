@@ -1,0 +1,18 @@
+<h1>Create a hairstyle.</h1>
+<%= form_for @hairstyle, :html => { :class => "hairstyle_form"} do |f| %> 
+  <%= f.label :style_name %> 
+  
+  <%= f.text_field :style_name, :autofocus => true, :required => true %> 
+  
+  <%= f.label "How long is your hair?" %>
+  <%= f.select :length, @length %>
+
+  <%= f.label "How curly is your hair?" %>
+  <%= f.select :curliness, @curliness %>
+
+  <%= f.label "When did you last wash your hair?" %>
+  <%= f.select :hygiene, @hygiene %>
+ 
+  <%= f.submit %>  
+ <% end %>
+  

@@ -1,0 +1,22 @@
+<%= form_for @user, :html => { :class => "user_form"} do |f| %> 
+  <%= f.label :name %> 
+  <%= f.text_field :name, :autofocus => true, :required => true %> 
+  <%= f.label :email %> 
+  <%= f.email_field :email %> 
+  <%= f.label :gender %> 
+  <%= f.select :gender, [['Female', 'Female'], ['Male', 'Male'], ['Transgender', 'Transgender'], ['Transsexual', 'Transsexual'], ['Intersex', 'Intersex'], ['Cross-dresser', 'Cross-dresser'], ['Female-to-male', 'Female-to-male'], ['Male-to-female', 'Male-to-female'], ['Other', 'Other'], ['Not telling', 'Not telling']] %>
+  <%= f.label :country %>
+  <%= f.country_select(:country, ["Australia", "Canada"]) %>
+  <%= f.label :city %> 
+  <%= f.text_field :city, :required => true %> 
+  <%= f.label :humidity_susceptibility %> 
+  <%= f.select :humidity_susceptibility, [['High', 0.90], ['Normal', 1.00], ['Low', 1.10]] %>
+  <%= f.label "Hair thickness" %> 
+  <%= f.select :thickness_susceptibility, [['Thin', 0.90], ['Normal', 1.00], ['Thick', 1.10]] %>
+  <%= f.label :password %> 
+  <%= f.password_field :password %>  
+  <%= f.label :password_confirmation %>  
+  <%= f.password_field :password_confirmation %>  
+  <%= f.submit %>  
+ <% end %>
+  

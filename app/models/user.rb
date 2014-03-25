@@ -14,6 +14,10 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :gender, :country, :city, :humidity_susceptibility, :thickness_susceptibility
+  attr_accessible :name, :email, :gender, :country, :city, :humidity_susceptibility, :thickness_susceptibility, :password, :password_confirmation
   has_and_belongs_to_many :hairstyles
+  
+  has_secure_password
+  validates :email, :presence => true, :uniqueness => true, :length => { :minimum => 5 }
+  validates :name, :presence => true, :uniqueness => true, :length => { :minimum => 2 }
 end

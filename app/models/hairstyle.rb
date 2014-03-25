@@ -15,7 +15,7 @@
 class Hairstyle < ActiveRecord::Base
   attr_accessible :style_name, :length, :curliness, :hygiene, :modifications
   has_and_belongs_to_many :users
-
+  
   def self.current_attributes
     {
       :length_attributes => {'no hair' => 0.0, 'very short' => 1.0, 'short' => 2.0, 'jaw-length' => 3.0, 'shoulder-length' => 4.0, 'back-length+' => 5.0},
@@ -23,6 +23,30 @@ class Hairstyle < ActiveRecord::Base
       :hygiene_attributes => {'today' => 1, 'yesterday' => 2.0, 'days ago' => 5.0, 'can’t remember' => 10.0},
       :modification_attributes => {'recent haircut' => -2.5, 'hair product' => -1.0, 'perm' => 1.0,  'dye'=> 1.0, 'highlights' => 1.0} 
     }
+  end
+
+  def self.length
+    length_keys = []
+    Hairstyle.current_attributes[:length_attributes].each do |length, value|
+      length_keys.push(length)
+    end
+    length_keys
+  end
+  
+  def self.curliness
+    curliness_keys = []
+    Hairstyle.current_attributes[:curliness_attributes].each do |curliness, value|
+      curliness_keys.push(curliness)
+    end
+    curliness_keys
+  end
+
+  def self.hygiene
+    hygiene_keys = []
+    Hairstyle.current_attributes[:hygiene_attributes].each do |hygiene, value|
+      hygiene_keys.push(hygiene)
+    end
+    hygiene_keys
   end
 
   def self.weather(country, city)
