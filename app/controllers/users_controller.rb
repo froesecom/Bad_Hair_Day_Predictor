@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
   end
   def custom_results
+   # stuff to do with weather
     weather = Hairstyle.weather(@current_user.country.gsub(" ", "_"), @current_user.city.gsub(" ", "_"))
     @city = weather[:city]
     @country = weather[:country]
@@ -36,6 +37,8 @@ class UsersController < ApplicationController
     @weather_icon = weather[:weather_icon]
     @wunderground_logo = weather[:wunderground_logo]
     
+    # variables I need to print custom user information
+
     # Now for the prediction....
     
     current_hair = Hairstyle.find(params[:hairstyle])

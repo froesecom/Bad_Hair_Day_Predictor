@@ -1,11 +1,19 @@
 <h1>Welcome <%= @name %></h1>
-<div id="user_hairstyles">
-  <%= link_to('Create a hairstyle', new_hairstyle_path) %>
-  <h2>Here are your current hairstyles:<h2>
-      <% @hairstyles.each do |hairstyle| %>
-        <p>
-          <%= hairstyle.style_name %><br>
-          <%= link_to "Get Custom Prediction", custom_path(hairstyle) %> | <%= link_to("Edit", edit_hairstyle_path(hairstyle), :method => :patch) %> | <%= link_to("Delete", hairstyle_path(hairstyle), :method => :delete) %>
-        </p>
-      <% end %>
-<div>
+<div id="user_container">
+  <div id="user_sidenav">
+    <ul>
+      <li><%= link_to('Create a hairstyle', new_hairstyle_path) %></li>
+      <li><%= link_to('Edit your details', edit_user_path) %></li>
+    </ul>
+  </div>
+  <div id="user_hairstyles">
+    
+    <h2>Here are your current hairstyles:<h2>
+        <% @hairstyles.each do |hairstyle| %>
+          <p>
+            <%= hairstyle.style_name %><br>
+            <%= link_to "Get Custom Prediction", custom_path(hairstyle) %> | <%= link_to("Edit", edit_hairstyle_path(hairstyle), :method => :patch) %> | <%= link_to("Delete", hairstyle_path(hairstyle), :method => :delete) %>
+          </p>
+        <% end %>
+  <div>
+</div>

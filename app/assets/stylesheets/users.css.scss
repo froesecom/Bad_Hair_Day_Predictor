@@ -4,3 +4,34 @@
 .user_form input {
   display: block;
 }
+#user_sidenav {
+  position: absolute;
+  top: 200px;
+  right: 50px;
+  width: 250px;
+  height: 150px;
+  border: 5px solid black;
+  text-align: center;
+  background-color: white;
+  padding-top:40px;
+  border-radius: 120px;
+}
+#user_sidenav ul {
+  list-style-type: none;
+  padding: 0;
+}
+#user_sidenav a {
+  text-decoration: none;
+  color: #D0006E;
+  font-family: 'Lobster', cursive;
+  font-size: 24px;
+
+}
+#user_sidenav li {
+  margin: 10px;
+}
+#user_container {
+  background: url(/assets/good.jpg) no-repeat;
+  background-size: contain;
+  min-height: 960px;
+}
