@@ -25,6 +25,19 @@ class Hairstyle < ActiveRecord::Base
     }
   end
 
+  def self.mod_a_to_s(mod_array) 
+    mods = ""
+    mod_array.each do |mod|
+       mods << (mod + "-")
+    end
+    mods
+  end
+
+  def self.mod_s_to_a(hairstyle)
+    mods_string = hairstyle.modifications
+    mods_string.split("-")
+  end
+
   def self.length
     length_keys = []
     Hairstyle.current_attributes[:length_attributes].each do |length, value|

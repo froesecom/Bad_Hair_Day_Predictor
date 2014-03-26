@@ -5,7 +5,12 @@ class HairstylesController < ApplicationController
   end
 
   def create
-    @hairstyle = @current_user.hairstyles.new params[:hairstyle]
+    # The following creates an array of modifications and converts them to a string so they can be saved in the database
+    mods = Hairstyle.mod_a_to_s(params[:modifications])
+    params_w_mods = params[:hairstyle].merge("modifications" => mods)
+    
+#Now we create a new hairstyle
+    @hairstyle = @current_user.hairstyles.new(params_w_mods)
     if @hairstyle.save
       
       session[:hairstyle_id] = @hairstyle.id
@@ -31,6 +36,11 @@ class HairstylesController < ApplicationController
   end
 
   def update
+    @hairstyle = Hairstyle.find params[:id]
+    @length = Hairstyle.length
+    @curliness = Hairstyle.curliness
+    @hygiene = Hairstyle.hygiene
+    @modification = Hairstyle.mod_s_to_a(@hairstyle)
   end
 
   def destroy

@@ -5,7 +5,7 @@
       <% @hairstyles.each do |hairstyle| %>
         <p>
           <%= hairstyle.style_name %><br>
-          Prediction | Edit |<%= link_to("Delete", hairstyle_path(hairstyle), :method => :delete) %>
+          Prediction | <%= link_to("Edit", hairstyle_path(hairstyle), :method => :patch) %> | <%= link_to("Delete", hairstyle_path(hairstyle), :method => :delete) %>
         </p>
       <% end %>
 <div>

@@ -1,4 +1,4 @@
-<h1>Create a hairstyle.</h1>
+
 <%= form_for @hairstyle, :html => { :class => "hairstyle_form"} do |f| %> 
   <%= f.label :style_name %> 
   
@@ -15,7 +15,7 @@
   
   <label for="modification">Do you have any of the following? </label><br>
     <% @modification.each do |modification, value| %>
-      <input type="checkbox" value="<%= modification %>" name="modifications[]"><%= modification %><br>
+      <input type="checkbox" value="<%= modification %>" <% if @hairstyle.modifications == modification %> selected <% end %> name="modifications[]"><%= modification %><br>
     <% end %>
  
   <%= f.submit %>  
