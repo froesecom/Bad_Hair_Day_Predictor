@@ -214,7 +214,7 @@ class Hairstyle < ActiveRecord::Base
         when 20.0..30.0
           bad_hair_prediction = ["Good day for hair", "Hot diddly dog!", "good", "/assets/good.jpg"]
         when 30.0..40.0
-          bad_hair_prediction = ["Average day for hair", "Did you say average!", "average", "/assets/average.jpg"]
+          bad_hair_prediction = ["Average day for hair", "Who said average!", "average", "/assets/average.jpg"]
         when 40.0..50.0
           bad_hair_prediction = ["Below average day for hair", "You have got to be fucking kidding me.", "below_average", "/assets/below_average.jpg"]
         when 50.0..60.0

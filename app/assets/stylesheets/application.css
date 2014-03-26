@@ -15,6 +15,10 @@
   display: block;
   margin: 0 auto;
 }
+.results#amazing {
+  color: white;
+  text-shadow: 0 0 10px black;
+}
 .results#good {
   padding: 60px;
 }
@@ -29,7 +33,7 @@
   min-height: 600px;
 }
 .results#bad, .results#crap {
-  max-width: 900px;
+  max-width: 960px;
 }
 html {
   font-family: 'Droid Sans', sans-serif;
