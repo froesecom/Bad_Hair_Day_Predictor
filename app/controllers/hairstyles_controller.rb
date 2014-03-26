@@ -37,7 +37,7 @@ class HairstylesController < ApplicationController
     @modification = Hairstyle.modification
     
     # This maginificent piece of crap took me hours to figure out.
-    # It allows me to pre-check the modification check boxes in the form
+    # It allows for pre-checking the modification check boxes in the form
     if Hairstyle.mod_s_to_a(@hairstyle) != nil
       @user_modification = Hairstyle.mod_s_to_a(@hairstyle)
     else
@@ -54,9 +54,8 @@ class HairstylesController < ApplicationController
   
     mods = Hairstyle.mod_a_to_s(params[:modifications])
     params_w_mods = params[:hairstyle].merge("modifications" => mods)
-    
     hairstyle = Hairstyle.find params[:id]
-    hairstyle.update_attributes(params[:hairstyle])
+    hairstyle.update_attributes(params_w_mods)
     redirect_to user_path(@current_user.id)
   end
 
