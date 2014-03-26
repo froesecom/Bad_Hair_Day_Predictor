@@ -9,7 +9,7 @@ class HairstylesController < ApplicationController
     mods = Hairstyle.mod_a_to_s(params[:modifications])
     params_w_mods = params[:hairstyle].merge("modifications" => mods)
     
-#Now we create a new hairstyle
+    #Now we create a new hairstyle
     @hairstyle = @current_user.hairstyles.new(params_w_mods)
     if @hairstyle.save
       
