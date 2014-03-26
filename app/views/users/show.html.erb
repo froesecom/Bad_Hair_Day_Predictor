@@ -7,13 +7,12 @@
     </ul>
   </div>
   <div id="user_hairstyles">
-    
-    <h2>Here are your current hairstyles:<h2>
-        <% @hairstyles.each do |hairstyle| %>
-          <p>
-            <%= hairstyle.style_name %><br>
-            <%= link_to "Get Custom Prediction", custom_path(hairstyle) %> | <%= link_to("Edit", edit_hairstyle_path(hairstyle), :method => :patch) %> | <%= link_to("Delete", hairstyle_path(hairstyle), :method => :delete) %>
-          </p>
-        <% end %>
+    <p>Your current hairstyles:<p>
+    <% @hairstyles.each do |hairstyle| %>
+    <p>
+      <%= hairstyle.style_name %>
+      (<%= link_to "Get Custom Prediction", custom_path(hairstyle) %> | <%= link_to("Edit", edit_hairstyle_path(hairstyle), :method => :patch) %> | <%= link_to("Delete", hairstyle_path(hairstyle), :method => :delete) %>)
+      <% end %>
+    </p>
   <div>
 </div>

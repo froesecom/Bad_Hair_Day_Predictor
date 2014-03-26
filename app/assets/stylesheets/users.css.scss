@@ -25,7 +25,11 @@
   color: #D0006E;
   font-family: 'Lobster', cursive;
   font-size: 24px;
-
+}
+#user_sidenav a:hover {
+  color: #387AA8;
+  font-family: 'Lobster', cursive;
+  font-size: 24px;
 }
 #user_sidenav li {
   margin: 10px;
@@ -35,3 +39,7 @@
   background-size: contain;
   min-height: 960px;
 }
+#user_hairstyles {
+  padding: 20px 0 0 30px;
+}
+
