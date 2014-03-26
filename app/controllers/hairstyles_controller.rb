@@ -34,7 +34,12 @@ class HairstylesController < ApplicationController
     @length = Hairstyle.length
     @curliness = Hairstyle.curliness
     @hygiene = Hairstyle.hygiene
-    @modification = Hairstyle.mod_s_to_a(@hairstyle)
+    if Hairstyle.mod_s_to_a(@hairstyle) == nil
+      @modification = Hairstyle.modification
+    else
+      @modification = Hairstyle.mod_s_to_a(@hairstyle)
+    end
+  
   end
 
   def show

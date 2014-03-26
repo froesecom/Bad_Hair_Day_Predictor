@@ -27,15 +27,19 @@ class Hairstyle < ActiveRecord::Base
 
   def self.mod_a_to_s(mod_array) 
     mods = ""
-    mod_array.each do |mod|
-       mods << (mod + "-")
+    if mod_array
+      mod_array.each do |mod|
+         mods << (mod + "-")
+      end
     end
     mods
   end
 
   def self.mod_s_to_a(hairstyle)
-    mods_string = hairstyle.modifications
-    mods_string.split("-")
+    if hairstyle.modifications != nil
+      mods_string = hairstyle.modifications
+      mods_string.split("-")
+    end
   end
 
   def self.length
