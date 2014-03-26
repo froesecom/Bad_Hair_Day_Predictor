@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321232158) do
+ActiveRecord::Schema.define(version: 20140326004242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,7 @@ ActiveRecord::Schema.define(version: 20140321232158) do
     t.text     "modifications"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "hairstyles_users", id: false, force: true do |t|
-    t.integer "hairstyle_id"
-    t.integer "user_id"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -39,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140321232158) do
     t.string  "country"
     t.text    "city"
     t.decimal "humidity_susceptibility"
-    t.string  "thickness_susceptibility"
+    t.decimal "thickness_susceptibility"
   end
 
 end

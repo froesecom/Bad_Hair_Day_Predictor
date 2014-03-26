@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :country
       t.text :city
       t.decimal :humidity_susceptibility
-      t.string :thickness_susceptibility
+      t.decimal :thickness_susceptibility
       t.timestamp
     end
   end

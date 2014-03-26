@@ -14,7 +14,7 @@
 
 class Hairstyle < ActiveRecord::Base
   attr_accessible :style_name, :length, :curliness, :hygiene, :modifications
-  has_and_belongs_to_many :users
+  belongs_to :user
   
   def self.current_attributes
     {

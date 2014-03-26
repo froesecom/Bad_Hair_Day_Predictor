@@ -1,2 +1,10 @@
 <h1>Welcome <%= @name %></h1>
-<p>@user</p>
+<div id="user_hairstyles">
+  <%= link_to('Create a hairstyle', new_hairstyle_path) %>
+  <h2>Here are your current hairstyles:<h2>
+    <ul>
+      <% @hairstyles.each do |hairstyle| %>
+        <li><%= hairstyle %></li>
+      <% end %>
+    </ul>
+<div>

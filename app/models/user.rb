@@ -10,12 +10,12 @@
 #  country                  :string(255)
 #  city                     :text
 #  humidity_susceptibility  :decimal(, )
-#  thickness_susceptibility :string(255)
+#  thickness_susceptibility :decimal(, )
 #
 
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :gender, :country, :city, :humidity_susceptibility, :thickness_susceptibility, :password, :password_confirmation
-  has_and_belongs_to_many :hairstyles
+  has_many :hairstyles
   
   has_secure_password
   validates :email, :presence => true, :uniqueness => true, :length => { :minimum => 5 }

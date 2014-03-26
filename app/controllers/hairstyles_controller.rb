@@ -5,8 +5,10 @@ class HairstylesController < ApplicationController
   end
 
   def create
-    @hairstyle = Hairstyle.new params[:user]
+    raise params.inspect
+    @hairstyle = @current_user.hairstyles.new params[:hairstyle]
     if @hairstyle.save
+      
       session[:hairstyle_id] = @hairstyle.id
       redirect_to user_path(@current_user.id)
     else

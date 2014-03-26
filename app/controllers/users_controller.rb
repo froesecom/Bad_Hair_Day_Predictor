@@ -25,6 +25,8 @@ class UsersController < ApplicationController
 
   def show
     @name = @current_user.name
+    @hairstyles = @current_user.hairstyles
+    
   end
 
   def update
