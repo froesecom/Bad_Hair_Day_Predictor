@@ -34,11 +34,16 @@ class HairstylesController < ApplicationController
     @length = Hairstyle.length
     @curliness = Hairstyle.curliness
     @hygiene = Hairstyle.hygiene
-    if Hairstyle.mod_s_to_a(@hairstyle) == nil
-      @modification = Hairstyle.modification
+    @modification = Hairstyle.modification
+    
+    # This maginificent piece of crap took me hours to figure out.
+    # It allows me to pre-check the modification check boxes in the form
+    if Hairstyle.mod_s_to_a(@hairstyle) != nil
+      @user_modification = Hairstyle.mod_s_to_a(@hairstyle)
     else
-      @modification = Hairstyle.mod_s_to_a(@hairstyle)
+      @user_modification = ""
     end
+    
   
   end
 

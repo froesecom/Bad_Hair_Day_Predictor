@@ -14,8 +14,9 @@
   <%= f.select :hygiene, @hygiene %>
   
   <label for="modification">Do you have any of the following? </label><br>
+    <!-- This bullshit piece of code does three things: creates the check boxes, and pre-checks boxes that are included in the string-->
     <% @modification.each do |modification, value| %>
-      <input type="checkbox" value="<%= modification %>" <% if @hairstyle.modifications == modification %> selected <% end %> name="modifications[]"><%= modification %><br>
+      <input type="checkbox" value="<%= modification %>" <% if @user_modification.include?modification %> checked <% end %> name="modifications[]"><%= modification %><br>
     <% end %>
  
   <%= f.submit %>  
