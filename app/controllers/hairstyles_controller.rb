@@ -30,17 +30,24 @@ class HairstylesController < ApplicationController
   end
 
   def edit
+    @hairstyle = Hairstyle.find params[:id]
+    @length = Hairstyle.length
+    @curliness = Hairstyle.curliness
+    @hygiene = Hairstyle.hygiene
+    @modification = Hairstyle.mod_s_to_a(@hairstyle)
   end
 
   def show
   end
 
   def update
-    @hairstyle = Hairstyle.find params[:id]
-    @length = Hairstyle.length
-    @curliness = Hairstyle.curliness
-    @hygiene = Hairstyle.hygiene
-    @modification = Hairstyle.mod_s_to_a(@hairstyle)
+  
+    mods = Hairstyle.mod_a_to_s(params[:modifications])
+    params_w_mods = params[:hairstyle].merge("modifications" => mods)
+    
+    hairstyle = Hairstyle.find params[:id]
+    hairstyle.update_attributes(params[:hairstyle])
+    redirect_to user_path(@current_user.id)
   end
 
   def destroy
