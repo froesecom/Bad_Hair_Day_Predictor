@@ -1,11 +1,10 @@
 class HairstylesController < ApplicationController
-  before_filter :check_if_logged_in, :except => [:create, :new]
-  before_filter :check_if_admin, :only => [:index]
+  before_filter :check_if_logged_in
+ 
   def index
   end
 
   def create
-    raise params.inspect
     @hairstyle = @current_user.hairstyles.new params[:hairstyle]
     if @hairstyle.save
       
@@ -35,5 +34,12 @@ class HairstylesController < ApplicationController
   end
 
   def destroy
+    
+    hairstyle = Hairstyle.find params[:id]
+    hairstyle.destroy
+    redirect_to user_path(@current_user.id)
+  end
+  def check_if_logged_in
+    redirect_to(root_path) if @current_user.nil?
   end
 end
