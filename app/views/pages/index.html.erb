@@ -1,11 +1,11 @@
 
-<h1>Bad Hair Day Predictor</h1>
+<h1 id="home_header">Bad Hair Day Predictor</h1>
 <div id="home">
   <div id="home_form">
     <form action="/results" method="post">
       <p>
         <label for="country">What country are you in? </label>
-        <%= country_select("user", "country", ["Australia", "Canada"]) %>
+        <%= country_select("user", "country", ["Australia", "Canada", "India", "China", "New Zealand"]) %>
       </p>
       
       <p>
@@ -45,8 +45,9 @@
       <button>Hair predicticate!</button>
     </form>
   </div>
+  
 </div>
 <footer>
-  <a href="/contact">Advertise</a>
-</footer>
+    <a href="/contact">Advertise</a>
+  </footer>
 

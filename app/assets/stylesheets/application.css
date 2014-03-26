@@ -7,7 +7,9 @@
   margin: 0 auto;
   display: block;
 }
-
+#home_header {
+  margin-left: 30px;
+}
 .results {
   max-width: 960px;
   min-height: 620px;
@@ -20,7 +22,9 @@
   text-shadow: 0 0 10px black;
 }
 .results#good {
-  padding: 60px;
+  padding: 40px;
+  color: white;
+  text-shadow: 0 0 10px black;
 }
 .results#perfect {
   color: white;
@@ -49,8 +53,8 @@ h1, h2, nav a {
 }
 nav {
   background-color: #D0006E;
-  padding: 10px 30px 10px 30px;
-  border: 3px solid black;
+  padding: 10px 30px 10px 20px;
+  border: 6px solid black;
 }
 nav a:hover {
   color: #FFB540;
@@ -61,11 +65,16 @@ nav a {
   color: white;
   text-shadow: 0 0 10px black;
   margin-right: 15px;
+  font-size: 18px;
 }
 footer {
   font-family: 'Lobster', cursive;
-  position:absolute;
-  bottom:15px;
+  position: relative;
+  bottom: 0;
+  right: 50px;
   width:100%;
-  background: solid white;
+  text-align: right;
+}
+footer a {
+  color: #387AA8;
 }
