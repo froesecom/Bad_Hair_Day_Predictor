@@ -15,7 +15,9 @@ class PagesController < ApplicationController
     @pop = weather[:pop]
     @weather_icon = weather[:weather_icon]
     @wunderground_logo = weather[:wunderground_logo]
-    prediction_results = Hairstyle.prediction(params[:length], params[:curliness], params[:hygiene], @humidity, @wind, @pop, params[:modifications])
+    # This monster passes things into the prediction algorithem. It needs to be refactored.
+    # The two ones at the end are defaul humidty and hair thickness multipliers, which I used for logged in users.
+    prediction_results = Hairstyle.prediction(params[:length], params[:curliness], params[:hygiene], @humidity, @wind, @pop, params[:modifications], 1, 1)
     @bad_hair_prediction = prediction_results[:prediction].first
     @message = prediction_results[:prediction][1]
     @div_id = prediction_results[:prediction][2]

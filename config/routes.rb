@@ -6,5 +6,6 @@ BadHair::Application.routes.draw do
   post "/login" => "session#create"
   delete "/login" => "session#destroy"
   patch "/hairstyles/:id/edit" => "hairstyles#edit"
+  get "/users/custom_results/:hairstyle" => "users#custom_results", as: "custom"
   resources :hairstyles, :users
 end

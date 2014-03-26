@@ -92,7 +92,7 @@ class Hairstyle < ActiveRecord::Base
 
   end
 
-  def self.prediction(length_params, curliness_params, hygiene_params, humidity_params, wind_params, pop_params, modification_params)
+  def self.prediction(length_params, curliness_params, hygiene_params, humidity_params, wind_params, pop_params, modification_params, hum_sus, thickness_sus)
     hairstyle = Hairstyle.current_attributes
     reasons = []
     # The variables below are set to the score of each attribute
@@ -139,8 +139,8 @@ class Hairstyle < ActiveRecord::Base
           reasons.push "Low humidity can cause static electricity, which increases your risk of a bad hair day. "
         end
       end
-      hum_curl_score = curliness_score  * (humidity_curl_risk) 
-      hum_other_score =  (length_score + hygiene_score) * humidity_other_risk
+      hum_curl_score = curliness_score  * (humidity_curl_risk) * hum_sus
+      hum_other_score =  (length_score + hygiene_score) * humidity_other_risk * hum_sus
 
     # <-------The following section calculates a wind score  --------------------------------->
     # Optimum wind is defined as 0.0kph. For each increment above 0.0, users incure a wind multiplier.
@@ -150,8 +150,8 @@ class Hairstyle < ActiveRecord::Base
       wind_length_risk = wind_params/10
       wind_other_risk = wind_params/20
 
-      wind_length_score = length_score  * wind_length_risk 
-      wind_other_score = (curliness_score + hygiene_score) * wind_other_risk
+      wind_length_score = length_score  * wind_length_risk  * thickness_sus
+      wind_other_score = (curliness_score + hygiene_score) * wind_other_risk * thickness_sus
       
       if wind_params > 30
         reasons.push "Windy days cause havoc with all types of hair. "

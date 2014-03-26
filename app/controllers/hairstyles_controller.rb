@@ -26,7 +26,13 @@ class HairstylesController < ApplicationController
     @curliness = Hairstyle.curliness
     @hygiene = Hairstyle.hygiene
     @modification = Hairstyle.modification
-
+# The following code just keeps the checkbox iteration in the form from exploding.
+#I need @user_modification to have a value, becuase I need @user_modification in the form so I can pre-check checkboxes when editing
+    if Hairstyle.mod_s_to_a(@hairstyle) != nil
+    @user_modification = Hairstyle.mod_s_to_a(@hairstyle)
+    else
+      @user_modification = ""
+    end
   end
 
   def edit
