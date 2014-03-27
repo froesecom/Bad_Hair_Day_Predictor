@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
 
   private
+ 
+
   def authenticate
     if session[:user_id].present?
       @current_user = User.find session[:user_id]
