@@ -110,7 +110,7 @@ class Hairstyle < ActiveRecord::Base
 # =========== THE ALGORITHM STARTS HERE!!!!!================================================
 
     if length_score == 0.0
-      bad_hair_prediction = ["You have no hair. What kind of a prediction did you expect?", "", "no_hair", ""]
+      bad_hair_prediction = ["You have no hair. What kind of a prediction did you expect?", "I got 99 problems, being bald ain't one.", "no_hair", "/assets/no_hair.jpg"]
     else
     # <-------The following section calculates a humidity score. --------------------------------->
     # Optimum humidity is defined as 30% Equal to or over 30%, users incure a humidity multiplier. Under 30%, users incure a static electricity mutliplier.

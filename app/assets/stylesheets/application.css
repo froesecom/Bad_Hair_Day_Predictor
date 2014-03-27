@@ -2,6 +2,9 @@
  *= require_self
  *= require_tree .
  */
+body {
+  margin: 30px 50px 20px 50px;
+}
 #results_container {
   max-width: 960px;
   margin: 0 auto;
@@ -15,7 +18,7 @@
 }
 .results {
   max-width: 960px;
-  min-height: 620px;
+  min-height: 550px;
   padding: 25px;
   display: block;
   margin: 0 auto;
@@ -31,7 +34,16 @@
   color: white;
   text-shadow: 0 0 10px black;
 }
-
+.results#horrendous h1 {
+  max-width: 400px;
+}
+.results#no_hair h1 {
+  max-width: 300px;
+}
+.results#no_hair {
+  padding-left: 70px;
+  padding-top: 80px;
+}
 .results#amazing {
   color: white;
   text-shadow: 0 0 10px black;
