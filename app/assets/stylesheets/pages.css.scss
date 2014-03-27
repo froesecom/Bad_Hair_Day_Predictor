@@ -36,3 +36,10 @@ select {
 
       }
       }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+   #home {
+        background: url("/assets/background_600.jpg") no-repeat;
+        background-size: contain;
+
+      }
+}
