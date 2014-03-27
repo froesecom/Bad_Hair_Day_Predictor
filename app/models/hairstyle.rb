@@ -212,9 +212,9 @@ class Hairstyle < ActiveRecord::Base
         when 10.0..20.0
           bad_hair_prediction = ["Amazing day for hair", "Well ain't that something'!", "amazing", "/assets/amazing.jpg"]
         when 20.0..30.0
-          bad_hair_prediction = ["Good day for hair", "Hot diddly dog!", "good", "/assets/good.jpg"]
+          bad_hair_prediction = ["Good day for hair", "Hot diggity dog!", "good", "/assets/good.jpg"]
         when 30.0..40.0
-          bad_hair_prediction = ["Average day for hair", "Who said average!", "average", "/assets/average.jpg"]
+          bad_hair_prediction = ["Average day for hair", "Who said average?!", "average", "/assets/average.jpg"]
         when 40.0..50.0
           bad_hair_prediction = ["Below average day for hair", "You have got to be fucking kidding me.", "below_average", "/assets/below_average.jpg"]
         when 50.0..60.0
@@ -222,9 +222,9 @@ class Hairstyle < ActiveRecord::Base
         when 60.0..70.0
           bad_hair_prediction = ["Crap day for hair", "Well that's crap.", "crap", "/assets/bad.jpg"]
         when 70.0..80.0
-          bad_hair_prediction = ["Terrible day for hair", "", "terrible", ""]
+          bad_hair_prediction = ["Terrible day for hair", "What now Martha? What now?", "terrible", "/assets/terrible.jpg"]
         when 80.0..90.0
-          bad_hair_prediction = ["Horrendous day for hair", "", "horrendous", ""]
+          bad_hair_prediction = ["Horrendous day for hair", "Don get over here. You're not going to believe this shit!", "horrendous", "/assets/horrendous.jpg"]
         when 90.0..100.0
           bad_hair_prediction = ["Catestrophic day for hair", "", "catestrophic", ""]
         end
