@@ -1,11 +1,15 @@
-<% if @user.errors.any? %>
-  <ol>
-    <% @user.errors.full_messages.each do |msg| %> 
-     <li> 
-        <%= msg %> 
-    </li>
+<div id ="register">
+  <div id="register_form"
+    <% if @user.errors.any? %>
+      <ol>
+        <% @user.errors.full_messages.each do |msg| %> 
+         <li> 
+            <%= msg %> 
+        </li>
+        <% end %>
+      </ol>
     <% end %>
-  </ol>
-<% end %>
 
-<%= render :partial => 'form' %>
+    <%= render :partial => 'form' %>
+  </div>
+</div>

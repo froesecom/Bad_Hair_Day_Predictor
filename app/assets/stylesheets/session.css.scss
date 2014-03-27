@@ -1,3 +1,25 @@
 // Place all the styles related to the Session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ #login {
+  background: url(/assets/login.jpg) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 20px;
+  min-height: 900px;
+}
+#login_form {
+ position: absolute;
+  top: 150px;
+  left: 90px;
+  width: 250px;
+  height: 200px;
+  border: 5px solid black;
+  text-align: center;
+  background-color: white;
+  padding-top:40px;
+  border-radius: 90px;
+
+}
