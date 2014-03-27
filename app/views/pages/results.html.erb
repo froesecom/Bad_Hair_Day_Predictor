@@ -6,6 +6,9 @@
     <h1><%= @message %></h1>
   </div>
   <div class="results" id="results_moreinfo">
+    <% @reasons.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
 
     <h2>Today's forecast for <%= @city %>, <%= @country %> <img src="<%= @weather_icon %>"></h2>
     <p>Temperature: <%= @temp %> C</p>
@@ -13,10 +16,6 @@
     <p>Wind: <%= @wind %>kph</p>
     <p>Probability of precipitation: <%= @pop %>%</p>
 
-
-    <% @reasons.each do |message| %>
-      <p><%= message %></p>
-    <% end %>
 
     <aside>Weather data supplied by <img alt="wunderground logo" src="<%= @wunderground_logo %>"> 
     </aside>
