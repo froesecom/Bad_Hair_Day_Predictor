@@ -203,9 +203,9 @@ class Hairstyle < ActiveRecord::Base
     # <-------Bad hair day prediction below  --------------------------------->
     # bad hair prediction results are an array of this format [prediction, message, div id, backgroun url]
       if wind_params < 5.0 && humidity > 2.75 && humidity < 3.25 && hygiene_params =='can’t remember' && pop_params == 0.0
-        bad_hair_prediction = "Today the weather is perfect for hair... If you wash your hair, you'll have a great hair day. Otherwise, you'll have a good, greasy hair day."
+        bad_hair_prediction = ["Perfect day for hair, except...", "You didn't wash your hair!", "catestrophic", "/assets/catestrophic.jpg"]
       elsif wind_params < 5.0 && humidity > 2.75 && humidity < 3.25 && pop_params == 0.0
-        bad_hair_prediction = "Today the weather is perfect for hair. Go get 'em champ!", "Can't believe my luck!", "average", "/assets/average.jpg", 
+        bad_hair_prediction = ["Today the weather is perfect for hair. Go get 'em champ!", "Can not believe my luck!", "average", "/assets/average.jpg"] 
       elsif user_badhair_score > 100.0
         bad_hair_prediction = ["Worst day for hair in the history of the universe.", "I'm going to bed. For a decade.", "catestrophic", "/assets/catestrophic.jpg"]
       else
