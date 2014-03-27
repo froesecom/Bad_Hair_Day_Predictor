@@ -4,6 +4,7 @@
   height: 500px;
   padding: 25px;
 }
+
 #home_form {
   background: rgba(255, 255, 255, 1);
   display: inline-block;
@@ -27,3 +28,11 @@ select {
   margin: 20px;
   border: 10px solid black;
 }
+   @media (max-width: 800px) {
+      
+      #home {
+        background: url("/assets/background_600.jpg") no-repeat;
+        background-size: contain;
+
+      }
+      }
