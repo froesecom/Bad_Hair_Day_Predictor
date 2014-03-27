@@ -26,6 +26,10 @@ body {
 .results#average {
   padding-top: 60px;
 }
+.results#catestrophic h1 {
+  width: 300px;
+  text-shadow: 0 0 10px white;
+}
 .results#terrible{
   color: white;
   text-shadow: 0 0 10px black;

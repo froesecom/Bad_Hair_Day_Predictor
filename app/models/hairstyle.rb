@@ -205,9 +205,9 @@ class Hairstyle < ActiveRecord::Base
       if wind_params < 5.0 && humidity > 2.75 && humidity < 3.25 && hygiene_params =='can’t remember' && pop_params == 0.0
         bad_hair_prediction = "Today the weather is perfect for hair... If you wash your hair, you'll have a great hair day. Otherwise, you'll have a good, greasy hair day."
       elsif wind_params < 5.0 && humidity > 2.75 && humidity < 3.25 && pop_params == 0.0
-        bad_hair_prediction = "Today the weather is perfect for hair. Go get 'em champ!"
+        bad_hair_prediction = "Today the weather is perfect for hair. Go get 'em champ!", "Can't believe my luck!", "average", "/assets/average.jpg", 
       elsif user_badhair_score > 100.0
-        bad_hair_prediction = ["Worst day for hair in the history of the universe.", "", "worst", ""]
+        bad_hair_prediction = ["Worst day for hair in the history of the universe.", "I'm going to bed. For a decade.", "catestrophic", "/assets/catestrophic.jpg"]
       else
         case user_badhair_score
         when 0.0..10.0
@@ -229,7 +229,7 @@ class Hairstyle < ActiveRecord::Base
         when 80.0..90.0
           bad_hair_prediction = ["Horrendous day for hair", "Don get over here. You're not going to believe this shit!", "horrendous", "/assets/horrendous.jpg"]
         when 90.0..100.0
-          bad_hair_prediction = ["Catestrophic day for hair", "", "catestrophic", ""]
+          bad_hair_prediction = ["Catestrophic day for hair", "Someone get me a glass of water.", "catestrophic", "/assets/catestrophic.jpg"]
         end
       end
     end
