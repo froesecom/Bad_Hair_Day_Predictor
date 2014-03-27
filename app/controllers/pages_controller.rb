@@ -25,6 +25,8 @@ class PagesController < ApplicationController
     @reasons = prediction_results[:reasons]
     
   end
+  def error
+  end
 
   def contact
   end
