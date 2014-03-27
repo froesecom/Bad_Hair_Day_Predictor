@@ -28,4 +28,8 @@ class PagesController < ApplicationController
 
   def contact
   end
+
+  def sendemail
+    UserMailer.contact_email(params[:email], params[:message]).deliver
+  end
 end
