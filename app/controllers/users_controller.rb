@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     
     current_hair = Hairstyle.find(params[:hairstyle])
     mods = current_hair.modifications.split("-")
-    prediction_results = Hairstyle.prediction(current_hair.length, current_hair.curliness, current_hair.hygiene, @humidity, @wind, @pop, mods, @current_user.humidity_susceptibility, @current_user.thickness_susceptibility)
+    prediction_results = Hairstyle.prediction(current_hair.length, current_hair.curliness, current_hair.hygiene, @humidity, @wind, @pop, mods, @current_user.humidity_susceptibility.to_f, @current_user.thickness_susceptibility.to_f)
     @bad_hair_prediction = prediction_results[:prediction].first
     @message = prediction_results[:prediction][1]
     @div_id = prediction_results[:prediction][2]
