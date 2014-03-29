@@ -1,7 +1,7 @@
 <%= form_for @user, :html => { :class => "user_form"} do |f| %> 
   <%= f.label :name %> 
   <%= f.text_field :name, :autofocus => true, :required => true %> 
-  <%= f.label :email %> 
+  <%= f.label :email %> *
   <%= f.email_field :email %> 
   <%= f.label :gender %> 
   <%= f.select :gender, [['Female', 'Female'], ['Male', 'Male'], ['Transgender', 'Transgender'], ['Transsexual', 'Transsexual'], ['Intersex', 'Intersex'], ['Cross-dresser', 'Cross-dresser'], ['Female-to-male', 'Female-to-male'], ['Male-to-female', 'Male-to-female'], ['Other', 'Other'], ['Not telling', 'Not telling']] %>
@@ -19,4 +19,5 @@
   <%= f.password_field :password_confirmation %>  
   <%= f.submit %>  
  <% end %>
+ <p id="register_email">*Your email address let's us know you're a real person. We will never send you an email, or give your address to anyone else... because it's illegal and we hate getting emails ourselves.</p>
   

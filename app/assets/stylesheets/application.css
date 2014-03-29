@@ -104,8 +104,14 @@ footer {
   bottom: 0;
   right: 50px;
   width:100%;
-  text-align: right;
+}
+footer p {
+  padding-left: 55px;
 }
 footer a {
   color: #387AA8;
+ 
+}
+#advertise {
+  float: right;
 }
