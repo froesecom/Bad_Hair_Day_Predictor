@@ -43,11 +43,8 @@ class Hairstyle < ActiveRecord::Base
   end
 
   def self.length
-    length_keys = []
-    Hairstyle.current_attributes[:length_attributes].each do |length, value|
-      length_keys.push(length)
-    end
-    length_keys
+    #This is less code, you could change this in the other methods; 
+    Hairstyle.current_attributes[:length_attributes].keys
   end
   
   def self.curliness
@@ -94,7 +91,8 @@ class Hairstyle < ActiveRecord::Base
     }
     end
   end
-
+  
+  # Have a go at breaking this down into smaller methods, as you mentioned on Friday its hard to follow, when you are creating the methods think about naming carefully so it makes semantic sense when people read it; 
   def self.prediction(length_params, curliness_params, hygiene_params, humidity_params, wind_params, pop_params, modification_params, hum_sus, thickness_sus)
     hairstyle = Hairstyle.current_attributes
     reasons = []

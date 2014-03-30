@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_filter :check_if_admin, :only => [:index]
   before_filter :check_owner, :only => [:show]
 
+  def new
+    @user = User.new
+  end
+
   def create
      @user = User.new params[:user]
     if @user.save
@@ -13,18 +17,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    @user = User.new
-  end
-
- 
-
   def show
-    
     @name = @current_user.name
     @hairstyles = @current_user.hairstyles
-
   end
+  
   def custom_results
    # stuff to do with weather
     weather = Hairstyle.weather(@current_user.country.gsub(" ", "_"), @current_user.city.gsub(" ", "_"))
