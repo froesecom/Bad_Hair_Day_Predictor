@@ -9,7 +9,7 @@
     <% @reasons.each do |message| %>
       <p><%= message %></p>
     <% end %>
-
+    <p><em>Want even more accurate and customised results? <%= link_to('Register here.', new_user_path) %></em></p>
     <h2>Today's forecast for <%= @city %>, <%= @country %> <img src="<%= @weather_icon %>"></h2>
     <p>Temperature: <%= @temp %> C</p>
     <p>Humidity: <%= @humidity %>%</p>
